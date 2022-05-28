@@ -1,27 +1,17 @@
 from model.student import Student
-from model.list_se import ListSE
+from model.list_se_circule import ListSE_circule
 
-class ListSE_Service:
+class ListSE_Service_circule:
     cities = ['Manizales', 'Pereira', 'Chinchina', 'Armenia']
 
     def __init__(self):
-        self.students = ListSE()
+        self.students = ListSE_circule
 
-    #Numero aleatorio
-    #def numero_aleatorio(self,data):
-      #  student=Student(data)
-     #   if data ==
-
-
-#Mostrar la lista
-    def get_all_students(self):
-        return self.students.head
-
-#Agregar
-    def add_student(self, data):
+#Adicionar
+    def add_to_last(self, data):
         student = Student(data)
         if data['city'] in self.cities:
-            self.students.add(student)
+            self.students.add_to_last(student)
         else:
             raise Exception("La ciudad que ingresaste no es valida")
 
@@ -40,14 +30,6 @@ class ListSE_Service:
         else:
             self.students.swap_ends()
             return {"Message":"Se han invertido los extremos"}
-
-#Insertar en posicion
-    def insert_in_position(self, position, Student):
-        try:
-            self.students.insert_in_position(position, (Student))
-            return {"message": "Se ha adicionado perfectamente"}
-        except Exception as e:
-            return {"message": str(e)}
 
 #Eliminar por dato
     def delete_for_data(self, id):
@@ -77,4 +59,5 @@ class ListSE_Service:
     def interleave_genders(self):
         self.students.interleave_genders()
         return {"message": "Se ha intercalado la lista"}
+
 
